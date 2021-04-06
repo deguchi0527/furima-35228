@@ -20,6 +20,6 @@ class User < ApplicationRecord
 
   with_options presence: true, format: {with: VALID_NAME_KANA_REGEX} do
     validates :first_name_kana
-    validates :lastname_kana
+    validates :last_name_kana
   end
 end
