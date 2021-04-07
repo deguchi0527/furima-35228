@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :sales_status_id
     validates :shipping_fee_status_id
     validates :prefecture_id
-    validatable :scheduled_delivery_id
+    validates :scheduled_delivery_id
   end
 
   validates :price, presence: true, inclusion: {in: (300..9_999_999)}, format: {with: /\A[0-9]+\z/ }
