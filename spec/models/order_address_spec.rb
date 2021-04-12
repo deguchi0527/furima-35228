@@ -72,8 +72,13 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numberが11桁以内の数値でないと登録できない' do
         @order_address.phone_number = '000011112222'
         @order_address.valid?
-        binding.pry
         expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      end
+      it 'tokenが空では保存できない' do
+        @order_address.token = nil
+        @order_address.valid?
+        binding.pry
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
