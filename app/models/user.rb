@@ -4,25 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
-  VALID_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
+  has_many :items
+  has_many :orders
 
   validates :nickname, presence: true
   validates :birth_date, presence: true
 
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は半角英数混合で入力してください' }
 
-  with_options presence: true, format: { with: VALID_NAME_REGEX } do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'は全角で入力してください' } do
     validates :last_name
     validates :first_name
   end
 
-  with_options presence: true, format: { with: VALID_NAME_KANA_REGEX } do
-    validates :first_name_kana
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'は全角(カナ)で入力してください' } do
     validates :last_name_kana
+    validates :first_name_kana
   end
-
-  has_many :items
-  has_many :orders
 end
