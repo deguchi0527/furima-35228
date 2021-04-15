@@ -27,10 +27,19 @@
   margin-bottom: 5px;
 }
 
-.search-form>.input-box {
-  width: 100%;
+.ransack-category-list {
+  width: 15%;
   height: 5vh;
   padding-left: 10px;
+  border: 1px solid;
+  border-right: none;
+}
+.search-form>.input-box {
+  width: 85%;
+  height: 5vh;
+  padding-left: 10px;
+  border: 1px solid;
+  border-left-color: rgba(0, 0, 0, 0.2);
 }
 
 .search-button {
