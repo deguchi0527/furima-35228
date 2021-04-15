@@ -41,9 +41,9 @@ class ItemsController < ApplicationController
   end
 
   def search
-    if params[:q][:category_id_eq] == "1"
+    if params[:q][:category_id_eq] == '1'
       params[:q].delete(:category_id_eq)
-      @p= Item.ransack(params[:q])
+      @p = Item.ransack(params[:q])
     end
     @results = @p.result.includes(:user).order('created_at DESC')
   end
