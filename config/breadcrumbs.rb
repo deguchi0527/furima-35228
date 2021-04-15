@@ -38,3 +38,8 @@ crumb :item_orders do |item|
   link "#{item.name} 購入ページ", item_orders_path(item.id)
   parent :show_item
 end
+
+crumb :search_items do |item|
+  link "#{item.name_eq} 検索ページ", search_items_path(item.id)
+  parent :root
+end
