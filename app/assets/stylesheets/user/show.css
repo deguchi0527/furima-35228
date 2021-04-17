@@ -1,0 +1,58 @@
+.my-page-header {
+  background-color: #f5f5f5;
+}
+
+.my-page-footer {
+  width: 100vw;
+}
+
+.user-info {
+  width: 40vw;
+  margin: 5vh auto 0;
+}
+
+.user-nickname-info  {
+  font-size: 20px;
+  padding-bottom: 1vh;
+}
+
+.position-basis {
+  position: relative;
+}
+
+.detail-value .user-nickname {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+.user-pull-down {
+  font-size: 20px;
+  margin-left: -20px;
+  cursor: pointer;
+}
+
+.nav-lists {
+  width: 14vw;
+  background-color: #f5f5f5;
+  display: none;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 120px
+}
+
+.nav-lists a {
+  display: block;
+  font-size: 18px;
+  color: black;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-lists a:last-child {
+  border: none;
+}
+
+.user-info-item {
+  padding: 5vh 0;
+}

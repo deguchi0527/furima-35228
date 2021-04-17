@@ -92,6 +92,13 @@
   text-align: center;
 }
 
+.detail-item-user {
+  color: black;
+}
+.detail-item-user:hover {
+  color: blue;
+}
+
 .detail-value {
   width: 80%;
   padding: 20px;
