@@ -43,3 +43,19 @@ crumb :search_items do |item|
   link "#{item.name_eq} 検索ページ", search_items_path(item.id)
   parent :root
 end
+
+crumb :show_user do |user|
+    user = User.find(params[:id])
+    link "#{user.nickname}さん 詳細ページ", user_path(user.id)
+    parent :root
+end
+
+crumb :edit_user do |user|
+  link "#{user.nickname}さん 編集ページ", edit_user_path(user.id)
+  parent :show_user
+end
+
+crumb :new_card do
+  link "クレジットカード登録ページ", new_card_path
+  parent :root
+end

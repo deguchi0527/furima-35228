@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     if current_user.card.present?
       @order_address = OrderAddress.new
     else
-      redirect_to cards_new_path
+      redirect_to new_card_path
     end
   end
 
