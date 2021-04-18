@@ -1,0 +1,102 @@
+<header class="items-sell-header my-page-header">
+  <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+</header>
+
+<% if user_signed_in? && current_user.id == @user.id%>
+  <div class="user-info">
+    <h2 class="user-nickname-info"><%= "#{@user.nickname} さんの情報"%></h2>
+    <table class="detail-table">
+      <tbody>
+        <tr id="table-data">
+          <th class="detail-item">ニックネーム</th>
+          <td class="detail-value position-basis">
+            <span class="user-nickname"><%= @user.nickname %></span>
+            <span class="user-pull-down" id= "lists">⚙</span>
+            <ul class="nav-lists" id="pull-down">
+              <li>
+                <%= link_to "アカウント編集", edit_user_path(current_user.id) %>
+                <% if @card.blank? %>
+                  <%= link_to "クレジットカード登録", new_card_path %>
+                <% end %>
+                <%= link_to "投稿する", new_item_path %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <% if @card.present? %>
+          <tr>
+            <th class="detail-item">カード番号</th>
+            <td class="detail-value"><%= "**** **** **** " + @card[:last4] %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">有効期限</th>
+            <td class="detail-value"><%= @card[:exp_month] %> / <%= @card[:exp_year] %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <th class="detail-item">カード番号</th>
+            <td class="detail-value">クレジットカードが登録されていません</td>
+          </tr>
+          <tr>
+            <th class="detail-item">有効期限</th>
+            <td class="detail-value">クレジットカードが登録されていません</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%# 商品一覧 %>
+<% if @items.length != 0 %>
+  <div class='item-contents user-info-item'>
+    <h2 class='title'><%= "#{@user.nickname}さんの 出品商品です"%></h2>
+    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <ul class='item-lists'>
+
+      <% @items.each do |item| %>
+      <li class='list'>
+        <%= link_to item_path(item.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag item.image, class: "item-img" %>
+
+          <% if item.order.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= item.price %>円<br><%= item.shipping_fee_status.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  <%# /商品一覧 %>
+
+<footer class="items-sell-footer my-page-footer">
+  <ul class="menu">
+    <li><a href="#">プライバシーポリシー</a></li>
+    <li><a href="#">フリマ利用規約</a></li>
+    <li><a href="#">特定商取引に関する表記</a></li>
+  </ul>
+  <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+  <p class="inc">
+    ©︎Furima,Inc.
+  </p>
+</footer>
+<% breadcrumb :show_user, @user %>

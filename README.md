@@ -17,6 +17,7 @@
 
 - has_many :items
 - has_many :orders
+- has_one  :card
 
 
 ## items テーブル
@@ -35,7 +36,7 @@
 
 ### Association
 
-- has_one :order
+- has_one    :order
 - belongs_to :user
 
 
@@ -50,7 +51,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :address
+- has_one    :address
 
 
 ## addresses テーブル
@@ -68,3 +69,16 @@
 # Association
 
 - belongs_to :order
+
+
+# cards テーブル
+
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| card_token             | string     | null: false                    |
+| customer_token         | string     | null: false                    |
+| user                   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
