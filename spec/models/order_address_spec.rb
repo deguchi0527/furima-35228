@@ -4,7 +4,8 @@ RSpec.describe OrderAddress, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
+    card = FactoryBot.create(:card)
+    @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id, customer_token: card.customer_token)
     sleep 0.1
   end
 
@@ -74,10 +75,10 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('電話番号は10桁又は11桁の半角数字で入力してください')
       end
-      it 'tokenが空では保存できない' do
-        @order_address.token = nil
+      it "customer_tokenが空では保存できない" do
+        @order_address.customer_token = nil
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('カード情報を入力してください')
+        expect(@order_address.errors.full_messages).to include("カード情報を入力してください")
       end
     end
   end
