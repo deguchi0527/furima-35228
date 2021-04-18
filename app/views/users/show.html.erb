@@ -15,26 +15,41 @@
             <ul class="nav-lists" id="pull-down">
               <li>
                 <%= link_to "アカウント編集", edit_user_path(current_user.id) %>
+                <% if @card.blank? %>
+                  <%= link_to "クレジットカード登録", new_card_path %>
+                <% end %>
                 <%= link_to "投稿する", new_item_path %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </li>
             </ul>
           </td>
         </tr>
-        <tr>
-          <th class="detail-item">カード番号</th>
-          <td class="detail-value"></td>
-        </tr>
-        <tr>
-          <th class="detail-item">有効期限</th>
-          <td class="detail-value"></td>
-        </tr>
+        <% if @card.present? %>
+          <tr>
+            <th class="detail-item">カード番号</th>
+            <td class="detail-value"><%= "**** **** **** " + @card[:last4] %></td>
+          </tr>
+          <tr>
+            <th class="detail-item">有効期限</th>
+            <td class="detail-value"><%= @card[:exp_month] %> / <%= @card[:exp_year] %></td>
+          </tr>
+        <% else %>
+          <tr>
+            <th class="detail-item">カード番号</th>
+            <td class="detail-value">クレジットカードが登録されていません</td>
+          </tr>
+          <tr>
+            <th class="detail-item">有効期限</th>
+            <td class="detail-value">クレジットカードが登録されていません</td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 <% end %>
 
 <%# 商品一覧 %>
+<% if @items.length != 0 %>
   <div class='item-contents user-info-item'>
     <h2 class='title'><%= "#{@user.nickname}さんの 出品商品です"%></h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
@@ -70,6 +85,7 @@
       <% end %>
     </ul>
   </div>
+<% end %>
   <%# /商品一覧 %>
 
 <footer class="items-sell-footer my-page-footer">

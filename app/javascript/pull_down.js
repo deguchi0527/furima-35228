@@ -6,10 +6,10 @@ function pullDown() {
   pullDownButton.addEventListener("click", function() {
     if (pullDownMenu.getAttribute("style") == "display:block;") {
       pullDownMenu.removeAttribute("style", "display:none;");
-      tableData.removeAttribute("style", "height:120px;")
+      tableData.removeAttribute("style", "height:150px;")
     } else {
       pullDownMenu.setAttribute("style", "display:block;");
-      tableData.setAttribute("style", "height:120px;")
+      tableData.setAttribute("style", "height:150px;")
     }
   });
 };

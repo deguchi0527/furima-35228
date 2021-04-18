@@ -28,4 +28,4 @@ ja:
         address: 番地
         building: 建物名
         phone_number: 電話番号
-        token: カード情報
+        customer_token: カード情報
