@@ -94,8 +94,8 @@
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
+    <h2>＜コメント一覧＞<h2>
     <div id="comments" class="comment-lists">
-      <h2>＜コメント一覧＞<h2>
       <% @comments.each do |comment| %>
         <p>
           <strong><%= link_to comment.user.nickname, user_path(comment.user.id) %>：</strong>

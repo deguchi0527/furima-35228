@@ -191,9 +191,13 @@
   margin: 10px 5px 0 0;
 }
 
+.comment-box>h2 {
+  text-align: left;
+  padding: 10px 10px 0;
+}
 .comment-lists {
   text-align: left;
-  padding: 10px;
+  padding: 0px 10px 10px;
 }
 
 .comment-lists p {
