@@ -33,6 +33,7 @@
   padding-left: 10px;
   border: 1px solid;
   border-right: none;
+  -webkit-appearance: none;
 }
 .search-form>.input-box {
   width: 85%;
