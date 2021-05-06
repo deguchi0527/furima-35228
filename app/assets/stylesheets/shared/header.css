@@ -84,7 +84,7 @@
 .lists-right {
   display: flex;
   list-style: none;
-  align-items: flex-end;
+  align-items: center;
 }
 
 
